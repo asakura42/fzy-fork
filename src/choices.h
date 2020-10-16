@@ -10,6 +10,7 @@
 struct scored_result {
 	score_t score;
 	const char *str;
+	size_t order;
 };
 
 typedef struct {
@@ -33,6 +34,8 @@ typedef struct {
 	} selections;
 
 	unsigned int worker_count;
+	
+	int (*cmpchoice)(const void *, const void *);
 } choices_t;
 
 void choices_init(choices_t *c, options_t *options);
