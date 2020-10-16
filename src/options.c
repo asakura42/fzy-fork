@@ -40,6 +40,7 @@ static struct option longopts[] = {{"show-matches", required_argument, NULL, 'e'
 				   {"benchmark", optional_argument, NULL, 'b'},
 				   {"workers", required_argument, NULL, 'j'},
 				   {"show-info", no_argument, NULL, 'i'},
+				   {"sorting-method", required_argument, NULL, 'm'},
 				   {"help", no_argument, NULL, 'h'},
 				   {NULL, 0, NULL, 0}};
 
@@ -56,13 +57,14 @@ void options_init(options_t *options) {
 	options->workers         = DEFAULT_WORKERS;
 	options->input_delimiter = '\n';
 	options->show_info       = DEFAULT_SHOW_INFO;
+	options->sorting_method  = DEFAULT_SORTING_METHOD;
 }
 
 void options_parse(options_t *options, int argc, char *argv[]) {
 	options_init(options);
 
 	int c;
-	while ((c = getopt_long(argc, argv, "vhs0e:q:l:t:p:j:i", longopts, NULL)) != -1) {
+	while ((c = getopt_long(argc, argv, "vhs0e:q:l:t:p:j:m:i", longopts, NULL)) != -1) {
 		switch (c) {
 			case 'v':
 				printf("%s " VERSION " © 2014-2018 John Hawthorn\n", argv[0]);
@@ -113,6 +115,15 @@ void options_parse(options_t *options, int argc, char *argv[]) {
 				}
 				options->num_lines = l;
 			} break;
+			case 'm':
+				if (strcmp(optarg, "score") && strcmp(optarg, "order")) {
+					fprintf(stderr, "Invalid format for --sorting-method: %s\n", optarg);
+					fprintf(stderr, "Must be either 'score' or 'order'\n");
+					usage(argv[0]);
+					exit(EXIT_FAILURE);
+				}
+				options->sorting_method = optarg;
+				break;
 			case 'i':
 				options->show_info = 1;
 				break;
