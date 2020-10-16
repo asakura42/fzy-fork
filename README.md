@@ -1,3 +1,9 @@
+Added patches:
+
+1. Press TAB for multiple select
+
+2. new `-m` flag for some sorting shit. https://github.com/mmartin/fzy
+
 ![fzy](http://i.hawth.ca/u/fzy-github.svg)
 
 **fzy** is a fast, simple fuzzy text selector for the terminal with an advanced scoring algorithm.
