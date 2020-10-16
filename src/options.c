@@ -11,17 +11,19 @@
 static const char *usage_str =
     ""
     "Usage: fzy [OPTION]...\n"
-    " -l, --lines=LINES        Specify how many lines of results to show (default 10)\n"
-    " -p, --prompt=PROMPT      Input prompt (default '> ')\n"
-    " -q, --query=QUERY        Use QUERY as the initial search string\n"
-    " -e, --show-matches=QUERY Output the sorted matches of QUERY\n"
-    " -t, --tty=TTY            Specify file to use as TTY device (default /dev/tty)\n"
-    " -s, --show-scores        Show the scores of each match\n"
-    " -0, --read-null          Read input delimited by ASCII NUL characters\n"
-    " -j, --workers NUM        Use NUM workers for searching. (default is # of CPUs)\n"
-    " -i, --show-info          Show selection info line\n"
-    " -h, --help     Display this help and exit\n"
-    " -v, --version  Output version information and exit\n";
+    " -l, --lines=LINES           Specify how many lines of results to show (default 10)\n"
+    " -p, --prompt=PROMPT         Input prompt (default '> ')\n"
+    " -q, --query=QUERY           Use QUERY as the initial search string\n"
+    " -e, --show-matches=QUERY    Output the sorted matches of QUERY\n"
+    " -t, --tty=TTY               Specify file to use as TTY device (default /dev/tty)\n"
+    " -s, --show-scores           Show the scores of each match\n"
+    " -0, --read-null             Read input delimited by ASCII NUL characters\n"
+    " -j, --workers NUM           Use NUM workers for searching. (default is # of CPUs)\n"
+    " -i, --show-info             Show selection info line\n"
+    " -m, --sorting-method=METHOD Sorting method of the matches (default score)\n"
+    " -h, --help                  Display this help and exit\n"
+    " -v, --version               Output version information and exit\n"
+    " TAB key                     Select multiple choices\n";
 
 static void usage(const char *argv0) {
 	fprintf(stderr, usage_str, argv0);
